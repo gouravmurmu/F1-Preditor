@@ -1,0 +1,12 @@
+pandas
+numpy
+scikit-learn
+xgboost
+lightgbm
+requests
+fastapi
+uvicorn
+matplotlib
+seaborn
+jupyter
+fastf1
