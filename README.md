@@ -1,3 +1,12 @@
+---
+title: F1 Predictor
+emoji: 🏎️
+colorFrom: red
+colorTo: gray
+sdk: docker
+pinned: false
+---
+
 # F1 2026 Prediction System
 
 ![F1 Predictor](https://img.shields.io/badge/F1-Predictor-red) ![Python](https://img.shields.io/badge/Python-3.9+-blue) ![Docker](https://img.shields.io/badge/Docker-Ready-blue)

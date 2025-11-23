@@ -21,32 +21,27 @@
    docker run -p 8000:8000 f1-prediction-api
    ```
 
-## Free Cloud Deployment (Recommended: Render.com)
+## Free Cloud Deployment (Recommended: Hugging Face Spaces)
 
-This project is configured for easy deployment on Render, which offers a free tier for web services.
+This project is configured for **free** deployment on Hugging Face Spaces using Docker.
 
-### Option 1: "Deploy to Render" Button (Easiest)
-1. Push this code to a GitHub repository.
-2. Create a Render account at [render.com](https://render.com).
-3. In Render, click **New +** and select **Blueprint**.
-4. Connect your GitHub account and select your repository.
-5. Render will automatically detect the `render.yaml` file and configure the service.
-6. Click **Apply** to deploy. 
+### Steps to Deploy
+1.  **Create an Account**: Go to [huggingface.co](https://huggingface.co) and create a free account.
+2.  **Create a New Space**:
+    *   Click on your profile picture -> **New Space**.
+    *   **Space Name**: `f1-predictor` (or similar).
+    *   **License**: MIT (optional).
+    *   **Space SDK**: Select **Docker**.
+    *   **Space Hardware**: Select **Free** (CPU Basic - 2 vCPU, 16GB RAM).
+    *   Click **Create Space**.
+3.  **Upload Code**:
+    *   You can clone the repository provided by Hugging Face and copy your files into it.
+    *   **OR** (Easier) Go to the **Files** tab of your new Space, click **Add file** -> **Upload files**, and drag & drop all your project files (including `Dockerfile`, `requirements.txt`, `app.py`, `src/`, `data/`, etc.).
+    *   Commit the changes.
+4.  **Wait for Build**: The Space will automatically build the Docker image. This may take a few minutes.
+5.  **Enjoy**: Once built, your app will be live at `https://huggingface.co/spaces/<your-username>/<space-name>`.
 
-### Option 2: Manual Setup
-1. Push this code to a GitHub repository.
-2. Create a Render account at [render.com](https://render.com).
-3. Click **New +** and select **Web Service**.
-4. Connect your GitHub repository.
-5. Configure the following settings:
-   - **Name**: `f1-predictor` (or any name you like)
-   - **Runtime**: `Python 3`
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `python app.py`
-6. Scroll down and select the **Free** instance type.
-7. Click **Create Web Service**.
-
-### Important Notes for Free Tier
-- **Spin Down**: On the free tier, the service will "sleep" after 15 minutes of inactivity. The first request after sleeping may take 30-60 seconds to load.
-- **Resources**: You have limited RAM (512MB). This should be enough for this model, but if you see "Out of Memory" errors, you may need to optimize the model size or upgrade.
+### Important Notes
+- **Port**: The `Dockerfile` is configured to expose port `7860`, which is required by Hugging Face Spaces.
+- **Permissions**: The Docker container runs as a non-root user (ID 1000) for security compliance.
 
